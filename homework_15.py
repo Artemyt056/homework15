@@ -7,12 +7,9 @@ check_url = requests.get(url)
 
 checking_url = check_url.json()
 
-money = sum([person['money'] for person in checking_url['magazine']])
-money_remainder = sum([product['remainder'] for product in checking_url['magazine']])
-money_and_remainder = money * money_remainder
-print(money_and_remainder)
 
-money_not_gluten_ = sum([person['money'] for person in checking_url['magazine'] if not['gluten']])
-money_not_gluten_remainder = sum([product['remainder'] for product in checking_url['magazine']])
-money_not_gluten_and_remainder = money_not_gluten_ * money_not_gluten_remainder
-print(money_not_gluten_and_remainder)
+money_remainder = sum([product['money'] * product['remainder'] for product in checking_url['magazine']])
+print(money_remainder)
+
+money_remainder_not_gluten = sum([product['money'] * product['remainder'] for product in checking_url['magazine'] if not['gluten']])
+print(money_remainder_not_gluten)
